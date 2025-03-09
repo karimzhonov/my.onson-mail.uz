@@ -3,7 +3,7 @@ version: '3.3'
 services:
 
   front:
-      container_name: auth
+      container_name: my
       build: .
       ports:
         - "4010:4010"
