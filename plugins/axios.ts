@@ -42,7 +42,7 @@ export default defineNuxtPlugin(() => {
           token.value = data
           return await request(method, url, config.data, config)
         }
-        await useRouter().push(`https://auth.onson-mail.uz?next=${window.location.href}`)
+        window.location.href = `https://auth.onson-mail.uz?next=${window.location.origin}`
       }
       const message = Object.values(error.response?.data ?? {}).map(v => typeof v === 'string' ? v : v.join('. ')).join('. ')
       toast({title: message, variant: 'destructive',})

@@ -13,15 +13,3 @@ export function valueUpdater<T extends Updater<any>>(updaterOrValue: T, ref: Ref
       ? updaterOrValue(ref.value)
       : updaterOrValue
 }
-
-
-export function assign(from: any, to: any) {
-  for (const key in from) {
-    if ( ['string', 'number'].includes(typeof from[key])) {
-      to[key] = assign(from[key], to[key] ?? {})
-    } else {
-      to[key] = from[key]
-    }
-  }
-  return to
-}

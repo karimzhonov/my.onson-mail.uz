@@ -20,6 +20,7 @@ import {
     SidebarProvider,
     SidebarTrigger,
 } from '@/components/ui/sidebar'
+import { useUser } from "@/store/user"
 
 import ThemeSwitcher from "@/components/ThemeSwitcher"
 
@@ -38,6 +39,10 @@ const breadcrumb = computed(() => {
         }
     }
     return []
+})
+
+onMounted(async () => {
+    await useUser().fetch_user()
 })
 </script>
 
@@ -64,6 +69,10 @@ const breadcrumb = computed(() => {
                     </Breadcrumb>
                 </div>
                 <div class="flex items-center gap-2 px-4">
+                    <Install />
+                    <Separator orientation="vertical" class="h-4" />
+                    <Notifications />
+                    <Separator orientation="vertical" class="h-4" />
                     <LangSwitcher />
                     <Separator orientation="vertical" class="h-4" />
                     <ThemeSwitcher />

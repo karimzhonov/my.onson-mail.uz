@@ -3,9 +3,9 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   runtimeConfig: {
-    TELEGRAM_TOKEN: process.env.TELEGRAM_TOKEN,
     public: {
       NUXT_APP_BACKEND_HOST: process.env.NUXT_APP_BACKEND_HOST,
+      VAPID_PUBLIC_KEY: process.env.VAPID_PUBLIC_KEY,
     }
   },
   modules: [

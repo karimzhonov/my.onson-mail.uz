@@ -31,10 +31,6 @@ const { isMobile } = useSidebar()
 
 const user = computed(() => useUser().user) 
 
-onMounted(async () => {
-  await useUser().fetch_user()
-})
-
 const logout = async () => {
   token.value.access = null
   token.value.refresh = null
