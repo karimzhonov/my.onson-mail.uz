@@ -1,21 +1,22 @@
 <script>
 import { Bell } from "lucide-vue-next";
+import { useMediaQuery } from '@vueuse/core'
 
 export default {
     name: 'Notifications',
     components: { Bell },
     data() {
         return {
-            open: false
+            open: false,
+            isDesktop: useMediaQuery('(min-width: 768px)'),
+            loaded: false,
         }
-    },
-    mounted() {
-        this.loadSw()
     },
     methods: {
         loadSw() {
+            if (this.loaded) return
             if ("serviceWorker" in navigator) {
-                
+
                 navigator.serviceWorker.register("/sw.js", { scope: "/" }).then(
                     function (registration) {
                         // Registration was successful
@@ -33,7 +34,7 @@ export default {
                 const {
                     public: { VAPID_PUBLIC_KEY },
                 } = useRuntimeConfig();
-            
+
                 navigator.serviceWorker.ready.then(async (registration) => {
                     const pushServerPublicKey = VAPID_PUBLIC_KEY;
                     // subscribe and return the subscription
@@ -42,9 +43,9 @@ export default {
                             userVisibleOnly: true,
                             applicationServerKey: pushServerPublicKey,
                         })
-                    
+
                     const d = JSON.parse(JSON.stringify(subscription))
-                    
+
                     const data = {
                         "user_agent": window.navigator.userAgent,
                         "browser": navigator.userAgentData.brands[1]?.brand ?? window.navigator.userAgent,
@@ -52,7 +53,8 @@ export default {
                         "auth": d.keys.auth,
                         "p256dh": d.keys.p256dh
                     }
-                    await this.$api.post('/notification/save_information/', {subscription: data})
+                    await this.$api.post('/notification/save_information/', { subscription: data })
+                    this.loaded = true
                 });
             }
         },
@@ -61,19 +63,38 @@ export default {
 </script>
 
 <template>
-    <Drawer>
-        <DrawerTrigger as-child>
-            <Button variant="ghost">
-                <Bell />
-            </Button>
-        </DrawerTrigger>
+    <Button variant="ghost" @click="open = true; loadSw()">
+        <Bell />
+    </Button>
+
+    <Dialog v-if="isDesktop" v-model:open="open">
+        <DialogContent class="sm:max-w-[425px]">
+            <DialogHeader>
+                <DialogTitle>Edit profile</DialogTitle>
+                <DialogDescription>
+                    Make changes to your profile here. Click save when you're done.
+                </DialogDescription>
+            </DialogHeader>
+            Test
+        </DialogContent>
+    </Dialog>
+
+    <Drawer v-else v-model:open="open">
         <DrawerContent>
-            <div class="mx-auto w-full max-w-sm">
-                <DrawerHeader>
-                    <DrawerTitle>Move Goal</DrawerTitle>
-                    <DrawerDescription>Set your daily activity goal.</DrawerDescription>
-                </DrawerHeader>
-            </div>
+            <DrawerHeader class="text-left">
+                <DrawerTitle>Edit profile</DrawerTitle>
+                <DrawerDescription>
+                    Make changes to your profile here. Click save when you're done.
+                </DrawerDescription>
+            </DrawerHeader>
+            Test
+            <DrawerFooter class="pt-2">
+                <DrawerClose as-child>
+                    <Button variant="outline">
+                        Cancel
+                    </Button>
+                </DrawerClose>
+            </DrawerFooter>
         </DrawerContent>
     </Drawer>
 </template>

@@ -21,11 +21,16 @@ export default {
             this.deferredPrompt = null;
         });
     },
+    methods: {
+        install() {
+            this.deferredPrompt.install()
+        }
+    }
 }
 </script>
 
 <template>
-    <Button v-if="deferredPrompt" variant="ghost" @click="deferredPrompt.prompt">
+    <Button v-if="deferredPrompt" variant="ghost" @click="install">
         <Download />
     </Button>
 </template>
