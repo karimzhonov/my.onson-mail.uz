@@ -35,6 +35,9 @@ export default {
                 } = useRuntimeConfig();
 
                 navigator.serviceWorker.ready.then(async (registration) => {
+                    try {
+
+                    
                     this.text = 'ready'
                     const permission = await Notification.requestPermission();
                     if (permission === 'granted') {
@@ -65,6 +68,9 @@ export default {
                     const r = await this.$api.post('/notification/save_information/', { subscription: data }, {}, false)
                     this.text = JSON.stringify(r.data)
                     this.loaded = true
+                } catch (e) {
+                    console.log(e);
+                }
                 });
             } else {
                 this.text = 'not support'
