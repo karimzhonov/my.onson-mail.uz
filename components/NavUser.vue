@@ -34,7 +34,7 @@ const user = computed(() => useUser().user)
 const logout = async () => {
   token.value.access = null
   token.value.refresh = null
-  await useRouter().push('https://auth.onson-mail.uz')
+  window.location.href = `https://auth.onson-mail.uz?next=${window.location.origin}`
 }
 
 </script>

@@ -23,7 +23,7 @@ export default {
     },
     methods: {
         install() {
-            if (this.deferredPrompt) this.deferredPrompt.prompt()
+            if (this.deferredPrompt) return this.deferredPrompt.prompt()
             this.$router.push(useLocalePath()('/install'))
         }
     }
