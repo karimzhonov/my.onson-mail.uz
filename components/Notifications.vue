@@ -69,7 +69,7 @@ export default {
                     this.text = JSON.stringify(r.data)
                     this.loaded = true
                 } catch (e) {
-                    console.log(e);
+                    this.text = JSON.stringify(e)
                 }
                 });
             } else {
