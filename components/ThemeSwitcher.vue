@@ -6,7 +6,7 @@ const colorMode = useColorMode()
 </script>
 
 <template>
-  <Button variant="ghost" @click="colorMode.preference == 'dark' ? colorMode.preference = 'light' : colorMode.preference = 'dark'">
+  <Button id="themeSwitcher" variant="ghost" @click="colorMode.preference == 'dark' ? colorMode.preference = 'light' : colorMode.preference = 'dark'">
     <Moon v-if="colorMode.preference == 'dark'"/>
     <Sun v-else/>
   </Button>

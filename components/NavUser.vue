@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import {
   Avatar,
   AvatarFallback,
@@ -45,6 +45,7 @@ const logout = async () => {
       <DropdownMenu>
         <DropdownMenuTrigger as-child>
           <SidebarMenuButton
+          id="userDropdown"
             size="lg"
             class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
           >

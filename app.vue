@@ -1,11 +1,14 @@
 <template>
+  <VTour backdrop highlight ref="mainTour" :steps="tour_steps" name="mainTour" :skip-button="tour_buttons.skipBtn"
+    :next-button="tour_buttons.nextBtn" :prev-button="tour_buttons.prevButton" :finish-button="tour_buttons.finishButton" />
   <Toaster />
   <NuxtLayout>
-    <NuxtPage/>
+    <NuxtPage />
   </NuxtLayout>
 </template>
 <script setup>
 import Toaster from '@/components/ui/toast/Toaster.vue'
+import { tour_steps, tour_buttons } from "@/components/utils"
 import { token } from './composables'
 
 useHead({
@@ -21,11 +24,20 @@ useHead({
   ]
 })
 
+const mainTour = ref(null);
+
 onMounted(() => {
   const params = new URLSearchParams(window.location.search)
 
   if (params.get('access')) token.value.access = params.get('access')
   if (params.get('refresh')) token.value.refresh = params.get('refresh')
   window.history.replaceState({}, document.title, window.location.pathname);
+  mainTour.value?.startTour()
 })
 </script>
+
+<style>
+#nt-action-prev {
+  display: none;
+}
+</style>

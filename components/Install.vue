@@ -23,14 +23,15 @@ export default {
     },
     methods: {
         install() {
-            this.deferredPrompt.install()
+            if (this.deferredPrompt) this.deferredPrompt.install()
+            this.$router.push(useLocalePath()('/install'))            
         }
     }
 }
 </script>
 
 <template>
-    <Button v-if="deferredPrompt" variant="ghost" @click="install">
+    <Button id="install" variant="ghost" @click="install">
         <Download />
     </Button>
 </template>

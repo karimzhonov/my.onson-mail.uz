@@ -1,10 +1,20 @@
 <template>
-  <div class="flex flex-1 flex-col gap-4 p-4 pt-0">
-    <div class="grid auto-rows-min gap-4 md:grid-cols-3">
-      <div class="aspect-video rounded-xl bg-muted/50" />
-      <div class="aspect-video rounded-xl bg-muted/50" />
-      <div class="aspect-video rounded-xl bg-muted/50" />
+  <Loading :loading="loading">
+    <div class="flex flex-1 flex-col gap-4 p-4 pt-0">
+      <h1 class="text-xl font-bold">{{ $t('Мои последние заказы') }}</h1>
+        <div class="grid auto-rows-min gap-4 lg:grid-cols-2 xl:grid-cols-4">
+            <OrderTable :completed="false" />
+        </div>
     </div>
-    <div class="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
-  </div>
+  </Loading>
 </template>
+<script>
+export default {
+  name: 'Index',
+  data() {
+    return {
+      loading: false
+    }
+  }
+}
+</script>

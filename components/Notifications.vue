@@ -1,6 +1,5 @@
 <script>
 import { Bell } from "lucide-vue-next";
-import { useMediaQuery } from '@vueuse/core'
 
 export default {
     name: 'Notifications',
@@ -8,7 +7,6 @@ export default {
     data() {
         return {
             open: false,
-            isDesktop: useMediaQuery('(min-width: 768px)'),
             loaded: false,
         }
     },
@@ -16,7 +14,6 @@ export default {
         loadSw() {
             if (this.loaded) return
             if ("serviceWorker" in navigator) {
-
                 navigator.serviceWorker.register("/sw.js", { scope: "/" }).then(
                     function (registration) {
                         // Registration was successful
@@ -53,7 +50,7 @@ export default {
                         "auth": d.keys.auth,
                         "p256dh": d.keys.p256dh
                     }
-                    await this.$api.post('/notification/save_information/', { subscription: data })
+                    await this.$api.post('/notification/save_information/', { subscription: data }, {}, false)
                     this.loaded = true
                 });
             }
@@ -63,38 +60,16 @@ export default {
 </script>
 
 <template>
-    <Button variant="ghost" @click="open = true; loadSw()">
-        <Bell />
-    </Button>
-
-    <Dialog v-if="isDesktop" v-model:open="open">
-        <DialogContent class="sm:max-w-[425px]">
-            <DialogHeader>
-                <DialogTitle>Edit profile</DialogTitle>
-                <DialogDescription>
-                    Make changes to your profile here. Click save when you're done.
-                </DialogDescription>
-            </DialogHeader>
-            Test
-        </DialogContent>
-    </Dialog>
-
-    <Drawer v-else v-model:open="open">
-        <DrawerContent>
-            <DrawerHeader class="text-left">
-                <DrawerTitle>Edit profile</DrawerTitle>
-                <DrawerDescription>
-                    Make changes to your profile here. Click save when you're done.
-                </DrawerDescription>
-            </DrawerHeader>
-            Test
-            <DrawerFooter class="pt-2">
-                <DrawerClose as-child>
-                    <Button variant="outline">
-                        Cancel
-                    </Button>
-                </DrawerClose>
-            </DrawerFooter>
-        </DrawerContent>
-    </Drawer>
+    <Sheet>
+        <SheetTrigger>
+            <Button id="notifications" variant="ghost" @click="loadSw">
+                <Bell />
+            </Button>
+        </SheetTrigger>
+        <SheetContent>
+            <SheetHeader>
+                <SheetTitle>{{$t('Уведомление')}}</SheetTitle>
+            </SheetHeader>
+        </SheetContent>
+    </Sheet>
 </template>

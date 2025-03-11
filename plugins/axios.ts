@@ -1,7 +1,6 @@
 import axios, { type AxiosResponse, type AxiosRequestConfig, type AxiosError } from "axios";
 import { token } from "~/composables";
 import { useToast } from "~/components/ui/toast";
-const FALLBACK_INTERVAL = 900 * 1000 * 0.75;
 
 const { toast } = useToast()
 
@@ -18,7 +17,8 @@ export default defineNuxtPlugin(() => {
     method: string,
     url: string,
     data: any | null,
-    config: AxiosRequestConfig = {}
+    config: AxiosRequestConfig = {},
+    toasted: boolean = true
   ): Promise<AxiosResponse | undefined> => {
     config.url = url;
     config.method = method;
@@ -28,7 +28,7 @@ export default defineNuxtPlugin(() => {
     }
     try {
       const response = await api.request(config);
-      if (config.method !== 'get') {
+      if (toasted) {
         toast({title: "Операция выполнена успешно"})
       }
       return response
@@ -53,10 +53,10 @@ export default defineNuxtPlugin(() => {
   return {
     provide: {
       api: {
-        get: async (url: string, config: AxiosRequestConfig = {}) => await request('get', url, null, config=config),
-        post: async (url: string, data: any, config: AxiosRequestConfig = {}) => await request('post', url, data, config),
-        patch: async (url: string, data: any, config: AxiosRequestConfig = {}) => await request('patch', url, data, config),
-        delete: async (url: string, config: AxiosRequestConfig = {}) => await request('delete', url, null, config),
+        get: async (url: string, config: AxiosRequestConfig = {}) => await request('get', url, null, config, false),
+        post: async (url: string, data: any, config: AxiosRequestConfig = {}, toasted=true) => await request('post', url, data, config, toasted),
+        patch: async (url: string, data: any, config: AxiosRequestConfig = {}, toasted=true) => await request('patch', url, data, config, toasted),
+        delete: async (url: string, config: AxiosRequestConfig = {}, toasted=true) => await request('delete', url, null, config, toasted),
       }
     },
   };

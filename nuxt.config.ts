@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   runtimeConfig: {
     public: {
       NUXT_APP_BACKEND_HOST: process.env.NUXT_APP_BACKEND_HOST,
@@ -10,10 +10,12 @@ export default defineNuxtConfig({
   },
   modules: [
     '@nuxtjs/tailwindcss',
-    'shadcn-nuxt',
-    'nuxt-telegram-auth',
     '@nuxtjs/color-mode',
     '@nuxtjs/i18n',
+    '@nuxtjs/leaflet',
+    'shadcn-nuxt',
+    'nuxt-telegram-auth',
+    'nuxt-tour',
   ],
   colorMode: {
     classSuffix: ''
