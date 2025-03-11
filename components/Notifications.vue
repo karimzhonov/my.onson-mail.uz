@@ -8,13 +8,15 @@ export default {
         return {
             open: false,
             loaded: false,
+            text: 'test'
         }
     },
     methods: {
         loadSw() {
             if (this.loaded) return
-            if ("serviceWorker" in navigator) {
-                navigator.serviceWorker.register("/sw.js", { scope: "/" }).then(
+            this.text = window.navigator.standalone
+            if ('serviceWorker' in navigator && 'PushManager' in window) {
+                navigator.serviceWorker.register("/sw.js?v=2", { scope: "/" }).then(
                     function (registration) {
                         // Registration was successful
                         console.log(
@@ -24,7 +26,7 @@ export default {
                     },
                     function (err) {
                         // registration failed :(
-                        console.log("ServiceWorker registration failed: ", err);
+                        this.text = err
                     }
                 );
 
@@ -33,6 +35,14 @@ export default {
                 } = useRuntimeConfig();
 
                 navigator.serviceWorker.ready.then(async (registration) => {
+                    const permission = await Notification.requestPermission();
+                    if (permission === 'granted') {
+                        console.log('Разрешение на уведомления получено!');
+                        subscribeToPush();
+                    } else {
+                        console.warn('Уведомления отключены пользователем.');
+                    }
+
                     const pushServerPublicKey = VAPID_PUBLIC_KEY;
                     // subscribe and return the subscription
                     const subscription = await registration.pushManager
@@ -53,6 +63,8 @@ export default {
                     await this.$api.post('/notification/save_information/', { subscription: data }, {}, false)
                     this.loaded = true
                 });
+            } else {
+                this.text = 'not support'
             }
         },
     }
@@ -69,6 +81,7 @@ export default {
         <SheetContent>
             <SheetHeader>
                 <SheetTitle>{{$t('Уведомление')}}</SheetTitle>
+                {{ text }}
             </SheetHeader>
         </SheetContent>
     </Sheet>

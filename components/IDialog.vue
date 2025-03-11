@@ -46,13 +46,13 @@ defineProps({dismissible: {type: boolean, default: true}})
     <DrawerTrigger as-child>
         <slot name="trigger" />
     </DrawerTrigger>
-    <DrawerContent class="h-[95vh] flex flex-col items-center">
+    <DrawerContent class="h-[85vh] flex flex-col items-center">
       <DrawerHeader class="text-left">
         <DrawerTitle>
             <slot name="header" />
         </DrawerTitle>
       </DrawerHeader>
-      <div class="w-full h-full overflow-y-scroll pl-5">
+      <div class="w-full h-full overflow-y-scroll">
         <slot />
       </div>
       <DrawerFooter class="pt-2 w-full">

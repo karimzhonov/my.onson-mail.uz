@@ -149,7 +149,7 @@
   }
 }
 
-*::-webkit-scrollbar {
+/* *::-webkit-scrollbar {
   width: 20px;
   height: 20px;
 }
@@ -167,4 +167,4 @@
 
 *::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--card));
-}
+} */

@@ -7,6 +7,7 @@ import {
   SidebarMenuItem,
 } from '@/components/ui/sidebar'
 import { type LucideIcon } from 'lucide-vue-next'
+import  {useSidebar} from './ui/sidebar'
 
 defineProps<{
   items: {
@@ -15,7 +16,7 @@ defineProps<{
     icon?: LucideIcon
   }[]
 }>()
-
+const {toggleSidebar} = useSidebar()
 const p = useLocalePath()
 </script>
 
@@ -23,10 +24,10 @@ const p = useLocalePath()
   <SidebarGroup>
     <SidebarGroupLabel>{{ $t('Карго') }}</SidebarGroupLabel>
     <SidebarMenu>
-      <SidebarMenuItem v-for="item in items" :key="item.title">
+      <SidebarMenuItem v-for="item in items" :key="item.title" @click="useRouter().push(p(item.url));toggleSidebar()">
         <SidebarMenuButton :tooltip="$t(item.title)">
           <component :is="item.icon" v-if="item.icon" />
-          <a :id="item.url" :href="p(item.url)">{{ $t(item.title) }}</a>
+          <a :id="item.url">{{ $t(item.title) }}</a>
         </SidebarMenuButton>
       </SidebarMenuItem>
     </SidebarMenu>

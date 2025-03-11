@@ -1,5 +1,5 @@
 <template>
-    <div class="md:w-[700px] md:h-[750px] w-full h-[95%]">
+    <div class="md:w-[700px] md:h-[750px] w-full h-[90%]">
       <LMap
         ref="map"
         :zoom="zoom"
@@ -15,7 +15,10 @@
         <LCurrentLocation />
       </LMap>
     </div>
-    <Button variant="outline" class="mt-3 w-full">{{ $t('Сохранить') }}</Button>
+    <div class="mt-auto flex flex-col gap-2 p-4 pt-2 w-full">
+      <Button variant="outline" class="mx-auto w-full">{{ $t('Сохранить') }}</Button>
+    </div>
+    
   </template>
   
   <script>
