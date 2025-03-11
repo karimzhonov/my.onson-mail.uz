@@ -42,20 +42,20 @@ export default {
                     const permission = await Notification.requestPermission();
                     if (permission === 'granted') {
                         console.log('Разрешение на уведомления получено!');
-                        subscribeToPush();
+                        try{subscribeToPush()} catch {}
                     } else {
                         console.warn('Уведомления отключены пользователем.');
                     }
 
                     const pushServerPublicKey = VAPID_PUBLIC_KEY;
-                    this.text = VAPID_PUBLIC_KEY
+                    this.text = VAPID_PUBLIC_KEY + 'key'
                     // subscribe and return the subscription
                     const subscription = await registration.pushManager
                         .subscribe({
                             userVisibleOnly: true,
                             applicationServerKey: pushServerPublicKey,
                         })
-                    this.text = JSON.stringify(subscription)
+                    this.text = JSON.stringify(subscription) + 'subs'
                     const d = JSON.parse(JSON.stringify(subscription))
 
                     const data = {
@@ -66,10 +66,10 @@ export default {
                         "p256dh": d.keys.p256dh
                     }
                     const r = await this.$api.post('/notification/save_information/', { subscription: data }, {}, false)
-                    this.text = JSON.stringify(r.data)
+                    this.text = JSON.stringify(r.data) + 'r.data'
                     this.loaded = true
                 } catch (e) {
-                    this.text = JSON.stringify(e)
+                    this.text = JSON.stringify(e) + 'error'
                 }
                 });
             } else {
