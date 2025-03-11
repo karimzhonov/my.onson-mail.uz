@@ -35,6 +35,7 @@ export default {
                 } = useRuntimeConfig();
 
                 navigator.serviceWorker.ready.then(async (registration) => {
+                    this.text = 'ready'
                     const permission = await Notification.requestPermission();
                     if (permission === 'granted') {
                         console.log('Разрешение на уведомления получено!');
@@ -44,13 +45,14 @@ export default {
                     }
 
                     const pushServerPublicKey = VAPID_PUBLIC_KEY;
+                    this.text = VAPID_PUBLIC_KEY
                     // subscribe and return the subscription
                     const subscription = await registration.pushManager
                         .subscribe({
                             userVisibleOnly: true,
                             applicationServerKey: pushServerPublicKey,
                         })
-
+                    this.text = JSON.stringify(subscription)
                     const d = JSON.parse(JSON.stringify(subscription))
 
                     const data = {
@@ -60,7 +62,8 @@ export default {
                         "auth": d.keys.auth,
                         "p256dh": d.keys.p256dh
                     }
-                    await this.$api.post('/notification/save_information/', { subscription: data }, {}, false)
+                    const r = await this.$api.post('/notification/save_information/', { subscription: data }, {}, false)
+                    this.text = JSON.stringify(r.data)
                     this.loaded = true
                 });
             } else {

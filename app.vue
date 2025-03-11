@@ -30,12 +30,10 @@ useHead({
 const mainTour = ref(null);
 
 onMounted(() => {
-  const params = new URLSearchParams(window.location.search)
-
-  if (params.get('access')) token.value.access = params.get('access')
-  if (params.get('refresh')) token.value.refresh = params.get('refresh')
+  if (useRoute().query.access) token.value.access = useRoute().query.access
+  if (useRoute().query.refresh) token.value.refresh = useRoute().query.refresh
   window.history.replaceState({}, document.title, window.location.pathname);
-  mainTour.value?.startTour()
+  // mainTour.value?.startTour()
 })
 </script>
 
