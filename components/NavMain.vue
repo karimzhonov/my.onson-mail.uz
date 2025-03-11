@@ -16,7 +16,7 @@ defineProps<{
     icon?: LucideIcon
   }[]
 }>()
-const {toggleSidebar} = useSidebar()
+const {setOpenMobile} = useSidebar()
 const p = useLocalePath()
 </script>
 
@@ -24,7 +24,7 @@ const p = useLocalePath()
   <SidebarGroup>
     <SidebarGroupLabel>{{ $t('Карго') }}</SidebarGroupLabel>
     <SidebarMenu>
-      <SidebarMenuItem v-for="item in items" :key="item.title" @click="useRouter().push(p(item.url));toggleSidebar()">
+      <SidebarMenuItem v-for="item in items" :key="item.title" @click="useRouter().push(p(item.url));setOpenMobile(false)">
         <SidebarMenuButton :tooltip="$t(item.title)">
           <component :is="item.icon" v-if="item.icon" />
           <a :id="item.url">{{ $t(item.title) }}</a>

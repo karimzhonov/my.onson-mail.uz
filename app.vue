@@ -32,7 +32,6 @@ const mainTour = ref(null);
 onMounted(() => {
   if (useRoute().query.access) token.value.access = useRoute().query.access
   if (useRoute().query.refresh) token.value.refresh = useRoute().query.refresh
-  window.history.replaceState({}, document.title, window.location.pathname);
   // mainTour.value?.startTour()
 })
 </script>

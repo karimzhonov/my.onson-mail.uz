@@ -1,14 +1,20 @@
 <template>
     <Loading :loading="loading">
         <div class="flex flex-1 flex-col gap-4 p-4 pt-0">
-            <h1 class="text-xl font-bold">{{ $t('Мои последние заказы') }}</h1>
-            <div class="grid auto-rows-min gap-4 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+            <h1 class="text-xl font-bold w-full">{{ $t('Мои последние заказы') }}</h1>
+            <div class="flex flex-wrap justify-center md:justify-start">
                 <OrderTable :completed="false" />
-                <h1 class="text-xl font-bold lg:col-span-2 xl:col-span-3 2xl:col-span-4">{{ $t('Доставление заказы') }}</h1>
+                <h1 class="text-xl font-bold w-full">{{ $t('Доставление заказы') }}</h1>
                 <OrderTable :completed="true"/>
             </div>
         </div>
     </Loading>
+    <IDialog v-if="order.id" :open="true">
+        <template v-slot:header>
+            {{ order.number }}
+        </template>
+        <OrderView :data="order" />
+    </IDialog>
 </template>
 <script>
 export default {
@@ -16,11 +22,17 @@ export default {
     data() {
         return {
             loading: true,
-            items: []
+            items: [],
+            order: {}
         }
     },
     async mounted() {
         await this.fetch_data()
+        if (this.$route.query.id) {
+            const {data} = await this.$api.get(`/cargo/order/order/${this.$route.query.id}/`)
+            this.order = data
+            this.$router.replace('/order')
+        }
     },
     methods: {
         async fetch_data() {

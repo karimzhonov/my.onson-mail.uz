@@ -22,9 +22,8 @@ import { boolean } from 'zod'
 
 const isDesktop = useMediaQuery('(min-width: 768px)')
 
-const isOpen = ref(false)
-
-defineProps({dismissible: {type: boolean, default: true}})
+const props = defineProps({dismissible: {type: boolean, default: true}, open: {type: boolean, default: false}})
+const isOpen = ref(props.open)
 </script>
 
 <template>
