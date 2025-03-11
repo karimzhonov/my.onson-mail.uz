@@ -55,7 +55,7 @@ export default {
 
                     const data = {
                         "user_agent": window.navigator.userAgent,
-                        "browser": navigator.userAgentData.brands[1]?.brand ?? window.navigator.userAgent,
+                        "browser": window.navigator.userAgent,
                         "endpoint": d.endpoint,
                         "auth": d.keys.auth,
                         "p256dh": d.keys.p256dh
