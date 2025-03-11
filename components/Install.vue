@@ -23,8 +23,8 @@ export default {
     },
     methods: {
         install() {
-            if (this.deferredPrompt) this.deferredPrompt.install()
-            this.$router.push(useLocalePath()('/install'))            
+            if (this.deferredPrompt) this.deferredPrompt.prompt()
+            this.$router.push(useLocalePath()('/install'))
         }
     }
 }
