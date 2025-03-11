@@ -60,7 +60,7 @@ export default {
 
                     const data = {
                         "user_agent": window.navigator.userAgent,
-                        "browser": window.navigator.userAgent,
+                        "browser": 'Onson Mail',
                         "endpoint": d.endpoint,
                         "auth": d.keys.auth,
                         "p256dh": d.keys.p256dh
