@@ -1,6 +1,6 @@
 <template>
-  <VTour backdrop highlight ref="mainTour" :steps="tour_steps" name="mainTour" :skip-button="tour_buttons.skipBtn"
-    :next-button="tour_buttons.nextBtn" :prev-button="tour_buttons.prevButton" :finish-button="tour_buttons.finishButton" />
+  <!-- <VTour backdrop highlight ref="mainTour" :steps="tour_steps" name="mainTour" :skip-button="tour_buttons.skipBtn"
+    :next-button="tour_buttons.nextBtn" :prev-button="tour_buttons.prevButton" :finish-button="tour_buttons.finishButton" /> -->
   <Toaster />
   <NuxtLayout>
     <NuxtLoadingIndicator />

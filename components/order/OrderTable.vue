@@ -1,13 +1,15 @@
 <template>
-    <IDialog v-for="item in process" :key="item.id">
-        <template v-slot:trigger>
-            <Order :data="item" class="mb-3" />
-        </template>
-        <template v-slot:header>
-            {{ item.number }}
-        </template>
-        <OrderView :data="item" />
-    </IDialog>
+    <Loading :loading="loading">
+        <IDialog v-for="item in process" :key="item.id">
+            <template v-slot:trigger>
+                <Order :data="item" class="mb-3" />
+            </template>
+            <template v-slot:header>
+                {{ item.number }}
+            </template>
+            <OrderView :data="item" />
+        </IDialog>
+    </Loading>
 </template>
 <script>
 export default {

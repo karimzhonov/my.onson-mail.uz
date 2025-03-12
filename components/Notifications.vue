@@ -9,7 +9,7 @@ export default {
     data() {
         return {
             open: false,
-            loaded: false,
+            loaded: true,
             text: 'test',
             items: {},
         }
@@ -86,8 +86,10 @@ export default {
             }
         },
         async fetch_data() {
+            this.loading = true
             const { data } = await this.$api.get('/notification/', { params: { limit: 30 } })
             this.items = data
+            this.loading = false
         },
         async select(item) {
             if (!item.read) {
@@ -118,6 +120,7 @@ export default {
                     <CheckCheck class="cursor-pointer" @click="allCheck" />
                 </SheetTitle>
             </SheetHeader>
+            <Loading :loading="loading">
             <ScrollArea class="h-screen flex">
                 <div class="flex-1 flex flex-col gap-2 pt-0">
                     <TransitionGroup name="list" appear>
@@ -151,6 +154,7 @@ export default {
                     </TransitionGroup>
                 </div>
             </ScrollArea>
+        </Loading>
         </SheetContent>
     </Sheet>
 </template>

@@ -12,3 +12,6 @@ export default {
     }
 }
 </script>
+<template>
+    <Loading :loading="true"/>
+</template>
