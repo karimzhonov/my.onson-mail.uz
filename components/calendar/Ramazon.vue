@@ -1,5 +1,5 @@
 <template>
-  <Alert>
+  <div class="p-3 bg-transparent border-b">
     <div class="relative">
     <div class="flex flex-row justify-between w-full">
       <div class="flex justify-center items-center md:flex-row flex-col">
@@ -21,7 +21,7 @@
       </div>
     </div>
   </div>
-  </Alert>
+</div>
 </template>
 
 <script>

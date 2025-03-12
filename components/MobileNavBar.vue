@@ -1,5 +1,5 @@
 <template>
-    <div class="p-2 w-full md:hidden h-[70px] bg-background absolute bottom-0 left-0 right-0 flex flex-row justify-between border-t shadow-md">
+    <div class="p-2 w-full md:hidden h-[70px] bg-background fixed bottom-0 left-0 right-0 flex flex-row justify-between border-t shadow-md">
         <a class="flex flex-col items-center" href="/" :class="useRoute().path === '/' ? 'text-foreground' : 'text-muted-foreground'">
             <Search />
             <p>{{ $t('Отследить') }}</p>

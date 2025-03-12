@@ -31,7 +31,7 @@ export default {
 </script>
 
 <template>
-    <Button id="install" variant="ghost" @click="install">
+    <Button class="m-2 p-0 w-6 h-6" id="install" variant="ghost" @click="install">
         <Download />
     </Button>
 </template>

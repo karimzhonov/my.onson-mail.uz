@@ -8,7 +8,7 @@ const onclick = () => {
 </script>
 
 <template>
-  <Button id="themeSwitchera" variant="ghost" @click="onclick">
+  <Button id="themeSwitchera" variant="ghost" @click="onclick" class="m-2 p-0 w-6 h-6">
     <Moon v-if="colorMode.preference == 'dark'" />
     <Sun v-if="colorMode.preference == 'light'" />
     <MonitorCog v-if="colorMode.preference == 'system'" />

@@ -109,8 +109,9 @@ export default {
 <template>
     <Sheet>
         <SheetTrigger>
-            <Button id="notifications" variant="ghost" @click="loadSw">
+            <Button id="notifications" variant="ghost" @click="loadSw" class="relative m-2 p-0 w-6 h-6">
                 <Bell />
+                <div v-if="items.unread" class="w-[15px] h-[15px] rounded-[50%] bg-red-500 text-xs text-white text-center absolute top-[2px] left-[12px]">{{ items.unread }}</div>
             </Button>
         </SheetTrigger>
         <SheetContent class="w-[350px]">
