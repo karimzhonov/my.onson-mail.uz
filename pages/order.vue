@@ -1,11 +1,9 @@
 <template>
     <Loading :loading="loading">
         <div class="flex flex-1 flex-col gap-4 p-4 pt-0">
-            <h1 class="text-xl font-bold w-full">{{ $t('Мои последние заказы') }}</h1>
+            <h1 class="text-xl font-bold w-full">{{ $t('Доставление заказы') }}</h1>
             <div class="flex flex-wrap justify-center md:justify-start">
-                <OrderTable :completed="false" />
-                <h1 class="text-xl font-bold w-full">{{ $t('Доставление заказы') }}</h1>
-                <OrderTable :completed="true"/>
+                <OrderTable :completed="true" />
             </div>
         </div>
     </Loading>

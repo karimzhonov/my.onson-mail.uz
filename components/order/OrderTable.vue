@@ -9,6 +9,7 @@
             </template>
             <OrderView :data="item" />
         </IDialog>
+        <p class="text-center text-md w-full"><i>{{ $t('Доставка еще не осуществлена, пока нет данных.') }}</i></p>
     </Loading>
 </template>
 <script>

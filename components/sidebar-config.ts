@@ -1,13 +1,18 @@
 import {
-    IdCard, Package
+    IdCard, Package, MapPin, Search
   } from 'lucide-vue-next'
 
 export default [
-    // {
-    //     title: 'Филиали',
-    //     url: '/filial',
-    //     icon: MapPin,
-    // },
+    {
+        title: 'Отследить',
+        url: '/',
+        icon: Search,
+    },
+    {
+        title: 'Филиали',
+        url: '/filial',
+        icon: MapPin,
+    },
     {
         title: 'Пасспорт',
         url: '/passport',
