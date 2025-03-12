@@ -21,13 +21,13 @@ import { ref } from 'vue'
 import { boolean } from 'zod'
 
 const isDesktop = useMediaQuery('(min-width: 768px)')
-
+const emits = defineEmits(['update:open'])
 const props = defineProps({dismissible: {type: boolean, default: true}, open: {type: boolean, default: false}})
 const isOpen = ref(props.open)
 </script>
 
 <template>
-  <Dialog v-if="isDesktop" v-model:open="isOpen">
+  <Dialog v-if="isDesktop" v-model:open="isOpen" @update:open="v => emits('update:open', v)">
     <DialogTrigger as-child>
         <slot name="trigger" />
     </DialogTrigger>
@@ -41,7 +41,7 @@ const isOpen = ref(props.open)
     </DialogContent>
   </Dialog>
 
-  <Drawer v-else v-model:open="isOpen" :dismissible="dismissible">
+  <Drawer v-else v-model:open="isOpen" :dismissible="dismissible" @update:open="v => emits('update:open', v)">
     <DrawerTrigger as-child>
         <slot name="trigger" />
     </DrawerTrigger>

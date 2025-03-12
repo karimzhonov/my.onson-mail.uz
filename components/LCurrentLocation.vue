@@ -1,8 +1,9 @@
-<template>
+<!-- <template>
     {{ coords }}
     <LMarker v-if="coords.latitude && coords.longitude" :lat-lng="[coords.latitude, coords.longitude]" />
-</template>
+</template> -->
 <script>
+import {findRealParent} from "./utils"
 export default {
     name: "CurrentLocation",
     data() {
@@ -17,9 +18,9 @@ export default {
     methods: {
         getLocation() {
             navigator.geolocation.watchPosition((position) => {
-                console.log(position);
+                const map = findRealParent(this)
+                map.leafletObject.panTo(new L.LatLng(position.coords.latitude, position.coords.longitude));
                 this.coords = position.coords
-                console.log(this.coords);
             }, (e) => {
                 console.log(e);
             })

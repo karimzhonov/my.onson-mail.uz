@@ -14,7 +14,6 @@ import {
     SidebarTrigger,
 } from '@/components/ui/sidebar'
 import { useUser } from "@/store/user"
-import { Bell } from 'lucide-vue-next'
 import ThemeSwitcher from "@/components/ThemeSwitcher"
 
 import sidebar_config from "@/components/sidebar-config"
@@ -80,5 +79,6 @@ onMounted(async () => {
             </header>
             <NuxtPage />
         </SidebarInset>
+        <MobileNavBar />
     </SidebarProvider>
 </template>

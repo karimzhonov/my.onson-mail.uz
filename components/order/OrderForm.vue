@@ -2,11 +2,8 @@
     <Form :initialValues="data" :validationSchema="formSchema" @submit="onSubmit">
         <FormField v-slot="{ componentField }" name="fio">
             <FormItem class="mb-3">
-                <FormLabel>{{ $t('ФИО') }}</FormLabel>
-                <FormControl>
-                    <Input type="text" :placeholder="$t('ФИО')" v-bind="componentField" :disabled="disabled"/>
-                </FormControl>
-                <FormMessage />
+                <FormLabel>{{ $t('Паспорт') }}</FormLabel>
+                <IPassport :data="data.client ?? {}" />
             </FormItem>
         </FormField>
 
@@ -34,7 +31,9 @@
             <FormItem class="mb-3">
                 <FormLabel>{{ $t('Точка доставки') }}</FormLabel>
                 <FormControl>
-                    <OrderDeliveryPoint v-if="componentField.value" mode="r"/>
+                    <div v-if="componentField.value" class="w-full h-[400px]">
+                        <OrderDeliveryPoint  mode="r" :value="componentField.value"/>
+                    </div>
                     <IDialog v-else :dismissible="false">
                         <template v-slot:trigger>
                             <Button class="w-full"> {{ $t('Указать точка доставки на карте') }} </Button>
@@ -42,7 +41,9 @@
                         <template v-slot:header>
                             {{ $t('Точка доставки') }}
                         </template>
-                        <OrderDeliveryPoint @selected="(value) => componentField.value = value" mode="w"/>
+                        <div class="md:w-[700px] md:h-[750px] w-full h-full">
+                            <OrderDeliveryPoint @selected="select_delivery_point" mode="w"/>
+                        </div>
                     </IDialog>
                 </FormControl>
                 <FormMessage />
@@ -71,6 +72,9 @@ export default {
         }
     },
     methods: {
+        select_delivery_point(value) {
+            console.log(value);
+        },
         onSubmit(values) {
             console.log(values);
         }

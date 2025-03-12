@@ -1,7 +1,7 @@
 <template>
     <IDialog v-for="item in process" :key="item.id">
         <template v-slot:trigger>
-            <Order :data="item" />
+            <Order :data="item" class="mb-3" />
         </template>
         <template v-slot:header>
             {{ item.number }}

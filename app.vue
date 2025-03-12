@@ -3,6 +3,7 @@
     :next-button="tour_buttons.nextBtn" :prev-button="tour_buttons.prevButton" :finish-button="tour_buttons.finishButton" />
   <Toaster />
   <NuxtLayout>
+    <NuxtLoadingIndicator />
     <NuxtPage />
   </NuxtLayout>
 </template>

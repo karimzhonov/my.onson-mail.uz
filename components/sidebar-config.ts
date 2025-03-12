@@ -1,5 +1,5 @@
 import {
-    IdCard, Package, MapPin
+    IdCard, Package
   } from 'lucide-vue-next'
 
 export default [

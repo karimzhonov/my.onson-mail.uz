@@ -9,7 +9,7 @@
             </div>
         </div>
     </Loading>
-    <IDialog v-if="order.id" :open="true">
+    <IDialog v-if="order_id" :open="true" @update:open="close">
         <template v-slot:header>
             {{ order.number }}
         </template>
@@ -23,18 +23,36 @@ export default {
         return {
             loading: true,
             items: [],
-            order: {}
+            order: {},
+        }
+    },
+    computed: {
+        order_id() {
+            return this.$route.query.id
+        }
+    },
+    watch: {
+        order_id(value) {
+            console.log(value);
+            if (value) this.fetch_order(value)
         }
     },
     async mounted() {
         await this.fetch_data()
-        if (this.$route.query.id) {
-            const {data} = await this.$api.get(`/cargo/order/order/${this.$route.query.id}/`)
-            this.order = data
-            this.$router.replace('/order')
+        if (this.order_id) {
+            await this.fetch_order(this.order_id)
         }
     },
     methods: {
+        close(v) {
+            console.log(v);
+            return !v ? this.$router.replace('/order') : null
+        },
+        async fetch_order(id) {
+            const {data} = await this.$api.get(`/cargo/order/order/${id}/`)
+            this.order = data
+            // this.$router.replace('/order')
+        },
         async fetch_data() {
             this.loading = true
             const {data} = await this.$api.get('/cargo/order/order/')

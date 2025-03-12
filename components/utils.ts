@@ -1,6 +1,19 @@
 import type { TourStep, ButtonProp } from "#nuxt-tour/props";
 import { FilePlus2, PlaneTakeoff, PlaneLanding, PackageSearch, Truck, Check } from "lucide-vue-next";
 
+export const findRealParent = (firstVueParent: any) => {
+  let found = false;
+  while (firstVueParent && !found) {
+      if (firstVueParent.leafletObject === undefined) {
+          firstVueParent = firstVueParent.$parent;
+      } else {
+          found = true;
+      }
+  }
+  return firstVueParent;
+};
+
+
 export const order_steps = [
   {
     step: "create_time",

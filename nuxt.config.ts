@@ -16,7 +16,9 @@ export default defineNuxtConfig({
     'shadcn-nuxt',
     'nuxt-telegram-auth',
     'nuxt-tour',
+    '@/modules/spa-loader',
   ],
+  spaLoadingTemplate: 'loader.html',
   colorMode: {
     classSuffix: ''
   },
@@ -37,7 +39,7 @@ export default defineNuxtConfig({
     strategy: 'prefix_except_default',
     locales: [
       { code: 'ru', language: 'ru', name: 'Русский', file: 'ru.json', cache: false },
-      { code: 'uz-cl', language: 'uz-cl', name: 'O\'zbek', file: 'uz-cl.json', cache: false }
+      { code: 'uz', language: 'uz', name: 'O\'zbek', file: 'uz.json', cache: false }
     ],
     defaultLocale: 'ru'
   },
