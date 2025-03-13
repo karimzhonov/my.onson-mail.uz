@@ -35,11 +35,11 @@ export default {
       </SidebarContent>
 
       <SidebarContent>
-        <NavMain :items="consulting" :header="$t('Туризм')"/>
+        <NavMain :items="consulting" :header="$t('Консалтинг')"/>
       </SidebarContent>
 
       <SidebarContent>
-        <NavMain :items="customs" :header="$t('Туризм')"/>
+        <NavMain :items="customs" :header="$t('Таможенное оформление')"/>
       </SidebarContent>
     </Sidebar>
   </div>

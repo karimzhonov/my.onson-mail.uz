@@ -1,5 +1,5 @@
 <template>
-    <Loading :loading="loading">
+    <Loading :loading="loading" class="lg:col-span-2 xl:col-span-4">
         <IDialog v-for="item in process" :key="item.id">
             <template v-slot:trigger>
                 <Order :data="item" class="mb-3" />

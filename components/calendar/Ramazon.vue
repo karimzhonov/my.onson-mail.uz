@@ -1,5 +1,5 @@
 <template>
-  <div class="p-3 bg-transparent border-b">
+  <div class="px-3 bg-transparent border-b mb-3">
     <div class="relative">
     <div class="flex flex-row justify-between w-full">
       <div class="flex justify-center items-center md:flex-row flex-col">

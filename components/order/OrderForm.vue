@@ -41,7 +41,7 @@
                         <template v-slot:header>
                             {{ $t('Точка доставки') }}
                         </template>
-                        <div class="md:w-[700px] md:h-[750px] w-full h-full">
+                        <div class="md:w-[60vw] md:h-[60vh] w-full h-full">
                             <OrderDeliveryPoint @selected="select_delivery_point" mode="w"/>
                         </div>
                     </IDialog>

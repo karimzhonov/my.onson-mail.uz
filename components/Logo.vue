@@ -1,5 +1,5 @@
 <template>
-    <a href="/" class="flex flex-row items-center">
+    <a :href="useLocalePath()('/')" class="flex flex-row items-center">
         <img class="mr-2" src="/logo.png" width="30"/>
         <span class="text-lg text-gray-700 dark:text-white">
             <p class="mb-0 font-bold text-transparent bg-clip-text bg-gradient-to-br from-[#00d8a5] to-[#8cd66a]"

@@ -4,12 +4,12 @@
             <div class="col-span-3 h-full w-[30%]">
                 <Avatar shape="square" class="w-full h-[80%]">
                     <AvatarImage :src="data.image" alt="@unovue" />
-                    <AvatarFallback class="w-full h-full">
+                    <AvatarFallback class="w-full h-full" style="background-color: transparent;">
                         <img src="/assets/default_user.png" />
                     </AvatarFallback>
                 </Avatar>
             </div>  
-            <div class="col-span-5 flex flex-col text-black h-full">
+            <div class="col-span-5 flex flex-col text-black h-full ml-3">
                 <div class="text-xs mb-2">
                     <p>ФИО / FIO</p>
                     <p class="font-semibold">{{ data.fio }}</p>

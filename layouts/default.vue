@@ -23,18 +23,14 @@ onMounted(async () => {
 </script>
 
 <template>
-    <SidebarProvider class="max-w-[1216px] mx-auto max-h-screen overflow-y-auto">
+    <SidebarProvider class="max-w-[1216px] mx-auto">
         <SidebarInset>
             <header
-                class="rounded-2xl sticky bg-sidebar z-11 top-0 flex justify-between h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+                class="rounded-b-2xl sticky bg-sidebar z-11 top-0 flex justify-between h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
                 <div class="flex items-center gap-2 px-4">
                     <SidebarHeader class="md:w-[--sidebar-width]">
-                        <SidebarMenuButton asChild>
-                            <Logo />
-                        </SidebarMenuButton>
+                        <Logo />
                     </SidebarHeader>
-                
-                    
                     <SidebarTrigger class="-ml-1 sidebarTrigger md:block hidden" />
                     <Separator orientation="vertical" class="mr-2 h-4 md:block hidden" />
                     <Breadcrumb class="md:block hidden">
@@ -59,9 +55,9 @@ onMounted(async () => {
                     <NavUser class="hidden md:block" />
                 </div>
             </header>
-            <div class="flex flex-row justify-center md:h-full h-[85%]">
+            <div class="flex flex-row justify-center h-full pb-[85px] md:pb-0">
                 <AppSidebar />
-                <div class="p-3 w-full h-full">
+                <div class="p-3 mt-5 w-full h-full">
                     <NuxtPage />
                 </div>
             </div>

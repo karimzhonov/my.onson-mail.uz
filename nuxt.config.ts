@@ -18,7 +18,7 @@ export default defineNuxtConfig({
     'nuxt-tour',
     // '@/modules/spa-loader',
   ],
-  spaLoadingTemplate: 'loader.html',
+  // spaLoadingTemplate: 'loader.html',
   colorMode: {
     classSuffix: ''
   },

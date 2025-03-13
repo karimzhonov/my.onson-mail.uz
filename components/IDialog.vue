@@ -31,7 +31,7 @@ const isOpen = ref(props.open)
     <DialogTrigger as-child>
         <slot name="trigger" />
     </DialogTrigger>
-    <DialogContent class="max-w-[85vw] max-h-[80vh] w-auto">
+    <DialogContent class="max-w-[85vw] max-h-[80vh] w-auto overflow-y-auto">
       <DialogHeader>
         <DialogTitle>
             <slot name="header" />

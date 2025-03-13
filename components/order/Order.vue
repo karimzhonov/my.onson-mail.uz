@@ -1,5 +1,5 @@
 <template>
-    <div class="mx-2 cursor-pointer aspect-[2/1] rounded-xl w-[350px] p-3 bg-muted/50 flex justify-center items-center">
+    <div class="mr-2 cursor-pointer aspect-[2/1] rounded-xl w-[350px] p-3 bg-muted/50 flex justify-center items-center">
         <div class="grid grid-cols-3 place-items-center">
             <div class="col-span-2">
                 <p>{{ $t('Номер') }}: <strong>{{ data.number }}</strong></p>

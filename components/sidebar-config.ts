@@ -1,5 +1,5 @@
 import {
-    IdCard, Package, MapPin, Search
+    IdCard, Package, MapPin, Search, Globe, Globe2, Notebook, Pen, NotebookPen
   } from 'lucide-vue-next'
 
 export const cargo = [
@@ -27,29 +27,60 @@ export const cargo = [
 
 export const turism = [
     {
-        title: 'Отследить',
+        title: 'Найти тур',
         url: '/',
         icon: Search,
+        disabled: true
+    },
+    {
+        title: 'Гарячие туры',
+        url: '/',
+        icon: Globe,
+        disabled: true
+    },
+    {
+        title: 'Чартерные туры',
+        url: '/',
+        icon: Globe2,
         disabled: true
     }
 ]
 
 export const consulting = [
     {
-        title: 'Отследить',
+        title: 'Подать заявку',
         url: '/',
-        icon: Search,
+        icon: Pen,
+        disabled: true
+    },
+    {
+        title: 'Отчеты',
+        url: '/',
+        icon: Notebook,
         disabled: true
     }
 ]
 
 export const customs = [
     {
-        title: 'Отследить',
+        title: 'Подать заявку',
         url: '/',
-        icon: Search,
+        icon: Pen,
         disabled: true
-    }
+    },
+    {
+        title: 'Отчеты',
+        url: '/',
+        icon: Notebook,
+        disabled: true
+    },
+    {
+        title: 'Бланки',
+        url: '/',
+        icon: NotebookPen,
+        disabled: true
+    },
+    
 ]
 
 export default [...cargo, ...turism, ...consulting, ...customs]

@@ -1,5 +1,5 @@
 <template>
-  <component class="my-2"  v-for="day in calendar" :key="day.id" :is="type_to_component[day.type]" :item="day" />
+  <component  v-for="day in calendar" :key="day.id" :is="type_to_component[day.type]" :item="day" />
 </template>
 
 <script>

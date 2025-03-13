@@ -2,7 +2,7 @@
   <!-- <VTour backdrop highlight ref="mainTour" :steps="tour_steps" name="mainTour" :skip-button="tour_buttons.skipBtn"
     :next-button="tour_buttons.nextBtn" :prev-button="tour_buttons.prevButton" :finish-button="tour_buttons.finishButton" /> -->
   <Toaster />
-  <div class="absolute top-[4rem] inset-x-0 flex items-start h-screen">
+  <div class="absolute inset-x-0 flex items-start h-[90vh]">
         <div
             class="h-64 w-2/3 bg-gradient-to-br from-[#8cd66a] opacity-20 blur-2xl dark:from-[#570cac] dark:invisible dark:opacity-40">
         </div>
@@ -18,7 +18,7 @@
     </div>
     
   <NuxtLayout>
-    <NuxtLoadingIndicator />
+    <!-- <NuxtLoadingIndicator /> -->
     <NuxtPage />
   </NuxtLayout>
 </template>
