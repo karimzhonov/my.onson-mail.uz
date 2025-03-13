@@ -23,28 +23,18 @@ onMounted(async () => {
 </script>
 
 <template>
-    <SidebarProvider>
-        <AppSidebar />
-        <SidebarInset class="pb-[70px]">
-            <div class="z-0 absolute top-[4rem] inset-x-0 h-[90%] md:h-screen flex items-start pointer-events-none">
-                <div
-                    class="h-24 w-2/3 bg-gradient-to-br from-[#8cd66a] opacity-20 blur-2xl dark:from-[#570cac] dark:invisible dark:opacity-40">
-                </div>
-                <div
-                    class="h-20 w-3/5 bg-gradient-to-r from-[#8cd66a] opacity-40 blur-2xl dark:from-[#670ccf] dark:opacity-40">
-                </div>
-            </div>
-
-            <div
-                class="z-0 absolute inset-y-0 w-[300px] left-0 top-[4rem] h-[90%] md:h-screen hidden dark:flex pointer-events-none">
-                <div
-                    class="h-full md:h-1/2 lg:h-full w-full bg-gradient-to-tr opacity-40 dark:blur-2xl dark:from-[#570cac] dark:opacity-20">
-                </div>
-            </div>
+    <SidebarProvider class="max-w-[1216px] mx-auto max-h-screen overflow-y-auto">
+        <SidebarInset>
             <header
-                class="sticky border-b bg-background top-0 flex justify-between h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+                class="rounded-2xl sticky bg-sidebar z-11 top-0 flex justify-between h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
                 <div class="flex items-center gap-2 px-4">
-                    <Logo class="md:hidden" />
+                    <SidebarHeader class="md:w-[--sidebar-width]">
+                        <SidebarMenuButton asChild>
+                            <Logo />
+                        </SidebarMenuButton>
+                    </SidebarHeader>
+                
+                    
                     <SidebarTrigger class="-ml-1 sidebarTrigger md:block hidden" />
                     <Separator orientation="vertical" class="mr-2 h-4 md:block hidden" />
                     <Breadcrumb class="md:block hidden">
@@ -65,10 +55,17 @@ onMounted(async () => {
                     <LangSwitcher />
                     <Install />
                     <Notifications />
-                    <ThemeSwitcher />
+                    <!-- <ThemeSwitcher /> -->
+                    <NavUser class="hidden md:block" />
                 </div>
             </header>
-            <NuxtPage class="z-2" />
+            <div class="flex flex-row justify-center md:h-full h-[85%]">
+                <AppSidebar />
+                <div class="p-3 w-full h-full">
+                    <NuxtPage />
+                </div>
+            </div>
+            
         </SidebarInset>
         <MobileNavBar />
     </SidebarProvider>

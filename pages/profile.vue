@@ -1,9 +1,9 @@
 <template>
-    <div class="flex flex-col justify-between h-full">
+    <div class="flex flex-col justify-between h-full w-full">
         <div class="flex flex-col items-center mt-3">
             <Avatar class="h-32 w-32 rounded-[50%] border-2 border-gray-400">
                 <AvatarImage :src="user.avatar" :alt="user.username" />
-                <AvatarFallback class="rounded-lg">
+                <AvatarFallback class="text-4xl">
                     {{ user.first_name ? user.first_name[0] : '' }}{{ user.last_name ? user.last_name[0] : '' }}
                 </AvatarFallback>
             </Avatar>

@@ -2,7 +2,7 @@ import {
     IdCard, Package, MapPin, Search
   } from 'lucide-vue-next'
 
-export default [
+export const cargo = [
     {
         title: 'Отследить',
         url: '/',
@@ -24,3 +24,32 @@ export default [
         icon: Package,
     }
 ]
+
+export const turism = [
+    {
+        title: 'Отследить',
+        url: '/',
+        icon: Search,
+        disabled: true
+    }
+]
+
+export const consulting = [
+    {
+        title: 'Отследить',
+        url: '/',
+        icon: Search,
+        disabled: true
+    }
+]
+
+export const customs = [
+    {
+        title: 'Отследить',
+        url: '/',
+        icon: Search,
+        disabled: true
+    }
+]
+
+export default [...cargo, ...turism, ...consulting, ...customs]

@@ -16,7 +16,7 @@ export default defineNuxtConfig({
     'shadcn-nuxt',
     'nuxt-telegram-auth',
     'nuxt-tour',
-    '@/modules/spa-loader',
+    // '@/modules/spa-loader',
   ],
   spaLoadingTemplate: 'loader.html',
   colorMode: {
