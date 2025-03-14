@@ -12,6 +12,10 @@
                 <span class="truncate text-sm text-center">{{ user.phone }}</span>
             </div>
             <SidebarContent class="w-full">
+                <MarketLink />
+            </SidebarContent>
+
+            <SidebarContent class="w-full">
                 <NavMain :items="cargo" :header="$t('Карго')" />
             </SidebarContent>
 

@@ -27,6 +27,10 @@ export default {
 
     <Sidebar collapsible="icon">
       <SidebarContent>
+        <MarketLink />
+      </SidebarContent>
+
+      <SidebarContent>
         <NavMain :items="cargo" :header="$t('Карго')" />
       </SidebarContent>
 
