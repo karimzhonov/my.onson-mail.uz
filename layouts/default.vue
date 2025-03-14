@@ -23,7 +23,7 @@ onMounted(async () => {
 </script>
 
 <template>
-    <SidebarProvider class="max-w-[1216px] mx-auto">
+    <SidebarProvider class="max-w-[1280px] mx-auto">
         <SidebarInset>
             <header
                 class="rounded-b-2xl sticky bg-sidebar z-11 top-0 flex justify-between h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">

@@ -1,5 +1,5 @@
 <template>
-    <div class="mx-2 aspect-[3/2] cursor-pointer rounded-xl bg-[url(/assets/passport.png)] bg-cover w-[350px] p-[10px] pt-[50px]">
+    <div class="aspect-[3/2] max-w-[94vw] cursor-pointer rounded-xl bg-[url(/assets/passport.png)] bg-cover p-[10px] pt-[50px]">
         <div class="flex flex-row">
             <div class="col-span-3 h-full w-[30%]">
                 <Avatar shape="square" class="w-full h-[80%]">

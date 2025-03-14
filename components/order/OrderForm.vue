@@ -3,7 +3,7 @@
         <FormField v-slot="{ componentField }" name="fio">
             <FormItem class="mb-3">
                 <FormLabel>{{ $t('Паспорт') }}</FormLabel>
-                <IPassport :data="data.client ?? {}" />
+                <IPassport class="w-[350px]" :data="data.client ?? {}" />
             </FormItem>
         </FormField>
 
